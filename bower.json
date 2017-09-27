@@ -1,0 +1,17 @@
+{
+  "name": "angular-to-do",
+  "homepage": "https://github.com/kgmaxwell1990/angular-to-do",
+  "authors": [
+    "Katie Maxwell <katie@codeinstitute.net>"
+  ],
+  "description": "angular to do project",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

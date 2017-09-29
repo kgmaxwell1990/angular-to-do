@@ -10,13 +10,14 @@ angular.module('RouteControllers', [])
  
         $scope.login = function() {
             UserAPIService.callAPI(URL + "accounts/api-token-auth/", $scope.data).then(function(results) {
-                $scope.token = results.data.token;
-                store.set("username", $scope.registrationUser.username);
-                store.set("authToken", $scope.token);
+
+                localStorage.setItem("username", $scope.registrationUser.username);
+                localStorage.setItem("authToken", results.data.token);
             }).catch(function(err) {
                 console.log(err.data);
             });
         };
+
         
  
         $scope.submitForm = function() {
@@ -36,11 +37,11 @@ angular.module('RouteControllers', [])
         };
     })
     
-    .controller('TodoController', function($scope, $location, TodoAPIService, store) {
+    .controller('TodoController', function($scope, $location, TodoAPIService) {
             var URL = "https://morning-castle-91468.herokuapp.com/";
      
-            $scope.authToken = store.get('authToken');
-            $scope.username = store.get('username');
+            $scope.authToken = localStorage.getItem('authToken');
+            $scope.username = localStorage.getItem('username');
      
             $scope.todos = [];
             
@@ -89,8 +90,8 @@ angular.module('RouteControllers', [])
         var id = $routeParams.id;
         var URL = "https://morning-castle-91468.herokuapp.com/";
         
-        $scope.authToken = store.get("authToken");
-        $scope.username = store.get("username");
+        $scope.authToken = localStorage.getItem("authToken");
+        $scope.username = localStorage.getItem("username");
  
  
  
